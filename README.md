@@ -1,20 +1,30 @@
-# Calcolo strutturale - GitHub Pages static root
+# Calcolo strutturale
 
-Questa versione è pronta per GitHub Pages senza build.
+Applicazione React/Vite per calcolo strutturale e predimensionamento.
 
-## Pubblicazione
+## Avvio locale
 
-1. Cancella i vecchi file dal repository GitHub.
-2. Carica direttamente questi file nella root del repository:
-   - `index.html`
-   - `assets/`
-   - `README.md`
-   - `_source/` opzionale
-3. Vai in `Settings > Pages`.
-4. Imposta:
-   - Source: `Deploy from a branch`
-   - Branch: `main`
-   - Folder: `/root`
-5. Salva e attendi il deploy.
+```bash
+npm install
+npm run dev
+```
 
-La cartella `_source` contiene il codice sorgente React solo per archivio/modifiche future. La pagina pubblica usa `index.html` e `assets/` presenti nella root.
+## Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Pubblicazione su GitHub Pages
+
+Questo progetto include già `.github/workflows/deploy.yml`.
+
+Dopo aver caricato il repository su GitHub:
+
+1. Vai su **Settings > Pages**.
+2. In **Build and deployment**, scegli **Source: GitHub Actions**.
+3. Fai un nuovo commit/push oppure apri **Actions** e lancia il workflow manualmente.
+4. La pagina pubblicata userà la cartella `docs` generata da Vite. In alternativa puoi scegliere **Deploy from a branch** e impostare **main / docs**.
+
+La configurazione `base: './'` in `vite.config.js` evita la pagina bianca tipica dei repository GitHub Pages pubblicati in sottocartella.
